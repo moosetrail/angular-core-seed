@@ -2,7 +2,7 @@
  * Created by Johanna on 15-09-02.
  */
 /// <reference path="Scripts/typings/angularjs/angular.d.ts"/>
-///<reference path="Scripts\typings\angular-local-storage\angular-local-storage.d.ts"/>
+///<reference path="Scripts\typings\angularLocalStorage\angularLocalStorage.d.ts"/>
 
 
 ///<reference path="Core/Authentication/authenticator.service.ts"/>
