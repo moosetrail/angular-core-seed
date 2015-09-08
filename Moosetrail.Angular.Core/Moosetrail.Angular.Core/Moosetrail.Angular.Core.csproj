@@ -68,11 +68,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular-moosetrail-core.js" />
+    <Content Include="angular-moosetrail-core.min.js" />
     <Content Include="Core\Authentication\authenticatorInterceptor.service.js" />
     <Content Include="Core\Visual\responsiveImage.html" />
     <Content Include="GruntFile.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
+    <Content Include="angular-moosetrail-core.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -93,6 +96,7 @@
     <TypeScriptCompile Include="Core\Authentication\tokenAuthorization.ts" />
     <TypeScriptCompile Include="Core\Authentication\userCredentials.ts" />
     <TypeScriptCompile Include="Core\Authentication\userRole.ts" />
+    <TypeScriptCompile Include="Core\Config.ts" />
     <TypeScriptCompile Include="Core\core.module.ts" />
     <TypeScriptCompile Include="Core\DataAccess\combinedDataFactory.ts" />
     <TypeScriptCompile Include="Core\DataAccess\dataAccess.module.ts" />
