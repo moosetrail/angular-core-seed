@@ -93,6 +93,30 @@ module Moosetrail.Core.DataAccess {
             return deferred.promise;
         }
 
+        postWithParams(url: string, sendData: any, params: any): ng.IPromise<DataResult> {
+            var deferred = this.q.defer();
+
+            this.http({ url: this.createUrl(url), method: "POST", params: params, data: sendData })
+                .success(
+                    (data, status) => deferred.resolve(new DataResult(data, status, DataSource.Http)))
+                .error((data, status) => deferred.reject(new DataResult(data, status, DataSource.Http))
+                    );
+
+            return deferred.promise;
+        }
+
+        postWithParamsWithoutData(url: string, params: any): ng.IPromise<DataResult> {
+            var deferred = this.q.defer();
+
+            this.http({ url: this.createUrl(url), method: "POST", params: params })
+                .success(
+                    (data, status) => deferred.resolve(new DataResult(data, status, DataSource.Http)))
+                .error((data, status) => deferred.reject(new DataResult(data, status, DataSource.Http))
+                    );
+
+            return deferred.promise;
+        }
+
         put(url: string, sendData: any): ng.IPromise<DataResult> {
             var deferred = this.q.defer();
 

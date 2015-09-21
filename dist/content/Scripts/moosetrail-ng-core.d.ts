@@ -100,6 +100,8 @@ declare module Moosetrail.Core.DataAccess {
         getWithData(url: string, data: any): ng.IPromise<DataResult>;
         post(url: string, sendData: any): ng.IPromise<DataResult>;
         postWithHeader(url: string, sendData: any, headers: any): ng.IPromise<DataResult>;
+        postWithParams(url: string, sendData: any, params: any): ng.IPromise<DataResult>;
+        postWithParamsWithoutData(url: string, params: any): ng.IPromise<DataResult>;
         put(url: string, sendData: any): ng.IPromise<DataResult>;
         putWithParams(url: string, params: any, data: any): ng.IPromise<DataResult>;
         deleteData(url: string): ng.IPromise<DataResult>;
