@@ -9,11 +9,11 @@ module Moosetrail.Core.DataAccess {
 
         private prefix = "data";
         protected q: ng.IQService;
-        private localStorage: ng.localStorage.ILocalStorageService;
+        private localStorage: ng.local.storage.ILocalStorageService;
 
         static $inject = ["$q", "localStorageService"];
 
-        public constructor($q: ng.IQService, local: angular.localStorage.ILocalStorageService) {
+        public constructor($q: ng.IQService, local: angular.local.storage.ILocalStorageService) {
             this.q = $q;
             this.localStorage = local;
         }

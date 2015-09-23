@@ -19,7 +19,13 @@ module Moosetrail.Core.Design {
                 imgClass: "@",
                 src: "@",
                 width: "@",
-                height: "@"
+                height: "@",
+                phoneWidth: "@",
+                tabletWidth: "@",
+                desktopWidth: "@",
+                phoneHeight: "@",
+                tabletHeight: "@",
+                desktopHeight: "@"
             }
         }
     }

@@ -9,13 +9,13 @@ module Moosetrail.Core.Authentication {
         authData: Authentication.UserCredentials;
         http: DataAccess.HttpDataFactory;
         q: ng.IQService;
-        localStroage : ng.localStorage.ILocalStorageService;
+        localStroage : ng.local.storage.ILocalStorageService;
 
 
         static $inject = ["$q", "localStorageService", "HttpDataFactory"];
 
 
-        constructor($q: ng.IQService, localStorage: ng.localStorage.ILocalStorageService, factory: DataAccess.HttpDataFactory) {
+        constructor($q: ng.IQService, localStorage: ng.local.storage.ILocalStorageService, factory: DataAccess.HttpDataFactory) {
             this.http = factory;
             this.q = $q;
             this.localStroage = localStorage;
@@ -67,7 +67,7 @@ module Moosetrail.Core.Authentication {
         }
 
         fillAuthData() : UserCredentials {
-            var authData = this.localStroage.get("authorizationData");
+            var authData = this.localStroage.get<TokenAuthorization>("authorizationData");
 
             if (authData)
                 this.setAuthData(authData);

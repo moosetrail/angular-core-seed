@@ -1,6 +1,6 @@
-/// <reference path="../../../src/Moosetrail.Angular.Core/Scripts/typings/angularjs/angular.d.ts" />
-/// <reference path="../../../src/Moosetrail.Angular.Core/Scripts/typings/angular-local-storage/angular-local-storage.d.ts" />
-/// <reference path="../../../src/Moosetrail.Angular.Core/Scripts/typings/jquery/jquery.d.ts" />
+/// <reference path="Scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="Scripts/typings/angular-local-storage/angular-local-storage.d.ts" />
+/// <reference path="Scripts/typings/jquery/jquery.d.ts" />
 declare module Moosetrail {
     class Module {
         app: ng.IModule;
