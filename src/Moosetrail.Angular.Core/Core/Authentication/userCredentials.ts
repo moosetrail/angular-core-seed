@@ -7,5 +7,6 @@ module Moosetrail.Core.Authentication {
         isAuthenticated: boolean;
         username: string;
         password: string;
+        roles: UserRole[];
     }
 }

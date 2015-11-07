@@ -9,11 +9,13 @@ module Moosetrail.Core.Authentication {
         isAuthenticated: boolean;
         username: string;
         token: string;
-        password : string;
+        password: string;
+        roles: UserRole[];
 
         constructor(username: string, token: string) {
             this.username = username;
             this.token = token;
+            this.roles = new Array<UserRole>(UserRole.User);
 
             if (username != null && username !== "" && this.token != null && this.token !== "")
                 this.isAuthenticated = true;
