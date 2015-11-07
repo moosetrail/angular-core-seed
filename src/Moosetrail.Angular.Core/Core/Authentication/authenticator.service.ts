@@ -27,16 +27,16 @@ module Moosetrail.Core.Authentication {
             this.authData = {
                 isAuthenticated: false,
                 username: "",
-                password: null
+                password: null,
+                roles: null
             };
         }
 
         login(username: string, password: string): ng.IPromise<DataAccess.DataResult> {
 
             var deferred = this.q.defer();
-
-            var data = "grant_type=password&username=" + username + "&password=" + password;
-            var headers = { 'Content-Type': "application/x-www-form-urlencoded" };
+            const data = `grant_type=password&username=${username}&password=${password}`;
+            const headers = { 'Content-Type': "application/x-www-form-urlencoded" };
 
             this.http.postWithHeader("token", data, headers).then(
                 (result: DataAccess.DataResult) => this.setAuthentication(username, result, deferred),
@@ -46,7 +46,7 @@ module Moosetrail.Core.Authentication {
         }
 
         private setAuthentication(username: string, result:any, def: any) {
-            var authData = new TokenAuthorization(username, result.data.access_token);
+            const authData = new TokenAuthorization(username, result.data.access_token);
             this.localStroage.set("authorizationData", authData);
             this.setAuthData(authData);
             def.resolve(result);
@@ -67,7 +67,7 @@ module Moosetrail.Core.Authentication {
         }
 
         fillAuthData() : UserCredentials {
-            var authData = this.localStroage.get<TokenAuthorization>("authorizationData");
+            const authData = this.localStroage.get<TokenAuthorization>("authorizationData");
 
             if (authData)
                 this.setAuthData(authData);
@@ -79,9 +79,16 @@ module Moosetrail.Core.Authentication {
 
         hasAuthorizationFor(role: UserRole): boolean {
             if (role === UserRole.User)
-                return true;
-
-            return false;
+                return this.authData.isAuthenticated;
+            else if (this.authData.roles != null) {
+                for (let i = 0; i < this.authData.roles.length; i++) {
+                    if (this.authData.roles[i] === role)
+                        return true;
+                }
+                return false;
+            }
+            else
+                return false;
         }
     }
 }
