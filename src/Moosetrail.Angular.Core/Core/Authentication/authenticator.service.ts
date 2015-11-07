@@ -6,7 +6,7 @@
 module Moosetrail.Core.Authentication {
     export class Authenticator {
 
-        authData: Authentication.UserCredentials;
+        authData: Authentication.TokenAuthorization;
         http: DataAccess.HttpDataFactory;
         q: ng.IQService;
         localStroage : ng.local.storage.ILocalStorageService;
@@ -24,12 +24,7 @@ module Moosetrail.Core.Authentication {
         }
 
         private clearAuthData(): void {
-            this.authData = {
-                isAuthenticated: false,
-                username: "",
-                password: null,
-                roles: null
-            };
+            this.authData = new TokenAuthorization("", null);
         }
 
         login(username: string, password: string): ng.IPromise<DataAccess.DataResult> {
@@ -64,6 +59,11 @@ module Moosetrail.Core.Authentication {
         logout() {
             this.localStroage.remove("authorizationData");
             this.clearAuthData();
+        }
+
+        setPremision(roles: UserRole[]):void {
+            this.authData.setRoles(roles);
+            this.localStroage.set("authorizationData", this.authData);
         }
 
         fillAuthData() : UserCredentials {

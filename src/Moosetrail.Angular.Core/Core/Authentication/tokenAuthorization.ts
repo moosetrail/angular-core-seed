@@ -22,5 +22,28 @@ module Moosetrail.Core.Authentication {
 
             this.password = null;
         }
+
+        setRoles(roles: UserRole[]): void {
+            for (let role in roles) {
+                this.roles.push(role);
+            }
+            this.cleanUpRoles();
+        }
+
+        private cleanUpRoles(): void {
+            const newRoles = new Array<UserRole>();
+
+            for (let i = 0; i < this.roles.length; i++) {
+                let roleFound = false;
+                for (let j = 0; j < newRoles.length; j++) {
+                    if (newRoles[j] === this.roles[i])
+                        roleFound = true;
+                }
+                if (!roleFound)
+                    newRoles.push(this.roles[i]);
+            }
+
+            this.roles = newRoles;
+        }
     }
 }
