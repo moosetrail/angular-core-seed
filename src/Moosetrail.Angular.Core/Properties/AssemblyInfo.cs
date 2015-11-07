@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Moosetrail.Angular.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Core project for AngularJs for Moosetrail AngularJs project")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Moosetrail Software")]
 [assembly: AssemblyProduct("Moosetrail.Angular.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
