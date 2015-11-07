@@ -24,6 +24,7 @@ declare module Moosetrail.Core.Authentication {
         private setAuthData(authData);
         private handleFailedLogin(reason, def);
         logout(): void;
+        setPremision(roles: UserRole[]): void;
         fillAuthData(): UserCredentials;
         hasAuthorizationFor(role: UserRole): boolean;
     }
@@ -44,7 +45,9 @@ declare module Moosetrail.Core.Authentication {
         username: string;
         token: string;
         password: string;
+        roles: UserRole[];
         constructor(username: string, token: string);
+        setRoles(roles: UserRole[]): void;
     }
 }
 declare module Moosetrail.Core.Authentication {
@@ -52,6 +55,7 @@ declare module Moosetrail.Core.Authentication {
         isAuthenticated: boolean;
         username: string;
         password: string;
+        roles: UserRole[];
     }
 }
 declare module Moosetrail.Core.Authentication {
