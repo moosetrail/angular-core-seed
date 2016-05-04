@@ -42,6 +42,13 @@ module Moosetrail.Core.Authentication {
 
         private setAuthentication(username: string, result:any, def: any) {
             const authData = new TokenAuthorization(username, result.data.access_token);
+            
+            if (result.data.roles.indexOf("Admin") > -1) {
+                authData.setRoles([UserRole.Admin, UserRole.User]);
+            } else {
+                authData.setRoles([UserRole.User]);
+            }
+
             this.localStroage.set("authorizationData", authData);
             this.setAuthData(authData);
             def.resolve(result);
@@ -82,7 +89,7 @@ module Moosetrail.Core.Authentication {
                 return this.authData.isAuthenticated;
             else if (this.authData.roles != null) {
                 for (let i = 0; i < this.authData.roles.length; i++) {
-                    if (this.authData.roles[i] === role)
+                    if (this.authData.roles[i].toString() === role.toString())
                         return true;
                 }
                 return false;

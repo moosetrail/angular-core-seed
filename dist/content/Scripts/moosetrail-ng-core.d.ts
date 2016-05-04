@@ -12,7 +12,7 @@ declare module Moosetrail {
 }
 declare module Moosetrail.Core.Authentication {
     class Authenticator {
-        authData: Authentication.UserCredentials;
+        authData: Authentication.TokenAuthorization;
         http: DataAccess.HttpDataFactory;
         q: ng.IQService;
         localStroage: ng.local.storage.ILocalStorageService;
@@ -24,6 +24,7 @@ declare module Moosetrail.Core.Authentication {
         private setAuthData(authData);
         private handleFailedLogin(reason, def);
         logout(): void;
+        setPremision(roles: UserRole[]): void;
         fillAuthData(): UserCredentials;
         hasAuthorizationFor(role: UserRole): boolean;
     }
@@ -44,7 +45,10 @@ declare module Moosetrail.Core.Authentication {
         username: string;
         token: string;
         password: string;
+        roles: UserRole[];
         constructor(username: string, token: string);
+        setRoles(roles: UserRole[]): void;
+        private cleanUpRoles();
     }
 }
 declare module Moosetrail.Core.Authentication {
@@ -52,6 +56,7 @@ declare module Moosetrail.Core.Authentication {
         isAuthenticated: boolean;
         username: string;
         password: string;
+        roles: UserRole[];
     }
 }
 declare module Moosetrail.Core.Authentication {
